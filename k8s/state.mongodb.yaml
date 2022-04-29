@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: dapr-mongo
+  namespace: default
+spec:
+  type: state.mongodb
+  version: v1
+  metadata:
+  - name: host
+    value: mongo-database
+  - name: username
+    value: admin
+  - name: password
+    value: Password123#
+  - name: databaseName
+    value: dapr-sample
+  - name: collectionName
+    value: products
+  - name: params
+    value: "?authMechanism=SCRAM-SHA-1&authSource=admin"

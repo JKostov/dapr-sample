@@ -1,0 +1,45 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: products
+  labels:
+    app: products
+spec:
+  selector:
+    app: products
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products
+  labels:
+    app: products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products
+  template:
+    metadata:
+      labels:
+        app: products
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "products"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+      - name: products
+        image: jkostov/dapr-products:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        env:
+        - name: DAPR_STORE_NAME
+          value: "dapr-mongo"
