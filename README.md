@@ -21,7 +21,7 @@ dapr init
     - Using [Dapr CLI](https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-deploy/#install-with-dapr-cli)
     - Using [Helm](https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-deploy/#install-with-helm-advanced)
 
-- Define Kubernetes files for your application and the required components - [examples](https://github.com/JKostov/dapr-sample)
+- Define Kubernetes files for your application and the required components - [examples](https://github.com/JKostov/dapr-sample/tree/master/k8s)
 
 - Apply the Kubernets files with:
 
